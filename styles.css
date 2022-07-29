@@ -1,0 +1,94 @@
+:root {
+  --primary-color: #000;
+  --secondary-color: #FFF;
+  --inv: 100%;
+}
+
+.light-theme {
+  --primary-color: #FFF;
+  --secondary-color: #000;
+  --inv: 0;
+}
+
+#btn {
+  cursor: pointer;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  padding: 10px;
+
+  border: 0.3rem solid;
+  border-color: var(--secondary-color);
+  border-radius: 0.6rem;
+}
+
+#btn:hover {
+  transform: scale(1.05) perspective(1px);
+  transition: all 0.25s ease;
+}
+
+.refreshbtn {
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: Aleo, serif;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  padding: 10px;
+
+  border: 0.2rem solid;
+  border-color: var(--secondary-color);
+  border-radius: 0.6rem;
+  display: inline-block;
+}
+
+.refreshbtn:hover {
+  transform: scale(1.05) perspective(1px);
+  transition: all 0.25s ease;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}
+
+.dice {
+  text-align: center;
+  display: inline-block;
+}
+
+body {
+  background-color: var(--primary-color);
+}
+
+h1 {
+  margin: 2rem;
+  padding-top: 2rem;
+  font-family: "Aleo", serif;
+  font-size: 7rem;
+  color: var(--secondary-color);
+}
+
+p {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  font-family: "Abel", sans-serif;
+}
+
+img {
+  width: 30%;
+  filter: invert(var(--inv));
+}
+
+footer {
+  padding: 5rem 0 2rem;
+  margin-bottom: 0;
+  color: var(--secondary-color);
+  text-align: center;
+  font-family: "Abel", sans-serif;
+  font-size: 1.25rem;
+}

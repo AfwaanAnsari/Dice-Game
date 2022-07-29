@@ -1,0 +1,1 @@
+This is a website for a game of chance made using HTML CSS and JavaScript. The site includes an option to toggle between light mode and dark mode as well.
