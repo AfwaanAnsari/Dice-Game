@@ -84,6 +84,11 @@ img {
   filter: invert(var(--inv));
 }
 
+img:hover {
+  transform: scale(1.1) perspective(1px);
+  transition: all 0.25s ease;
+}
+
 footer {
   padding: 5rem 0 2rem;
   margin-bottom: 0;
