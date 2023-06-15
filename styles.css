@@ -1,68 +1,35 @@
 :root {
   --primary-color: #000;
-  --secondary-color: #FFF;
+  --secondary-color: #fff;
   --inv: 100%;
 }
 
 .light-theme {
-  --primary-color: #FFF;
+  --primary-color: #fff;
   --secondary-color: #000;
   --inv: 0;
 }
 
-#btn {
-  cursor: pointer;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
+body {
   background-color: var(--primary-color);
-  color: var(--secondary-color);
-
-  padding: 10px;
-
-  border: 0.3rem solid;
-  border-color: var(--secondary-color);
-  border-radius: 0.6rem;
-}
-
-#btn:hover {
-  transform: scale(1.05) perspective(1px);
-  transition: all 0.25s ease;
-}
-
-.refreshbtn {
-  cursor: pointer;
-  font-size: 2rem;
-  font-family: Aleo, serif;
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-
-  padding: 10px;
-
-  border: 0.2rem solid;
-  border-color: var(--secondary-color);
-  border-radius: 0.6rem;
-  display: inline-block;
-}
-
-.refreshbtn:hover {
-  transform: scale(1.05) perspective(1px);
-  transition: all 0.25s ease;
+  margin: 0;
 }
 
 .container {
   width: 90%;
   margin: auto;
   text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.container.loaded {
+  opacity: 1;
 }
 
 .dice {
   text-align: center;
   display: inline-block;
-}
-
-body {
-  background-color: var(--primary-color);
 }
 
 h1 {
@@ -71,6 +38,12 @@ h1 {
   font-family: "Aleo", serif;
   font-size: 7rem;
   color: var(--secondary-color);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+h1.loaded {
+  opacity: 1;
 }
 
 p {
@@ -84,11 +57,6 @@ img {
   filter: invert(var(--inv));
 }
 
-img:hover {
-  transform: scale(1.1) perspective(1px);
-  transition: all 0.25s ease;
-}
-
 footer {
   padding: 5rem 0 2rem;
   margin-bottom: 0;
@@ -96,4 +64,73 @@ footer {
   text-align: center;
   font-family: "Abel", sans-serif;
   font-size: 1.25rem;
+}
+
+.playbtn {
+  cursor: pointer;
+  font-size: 2rem;
+  font-family: Aleo, serif;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px;
+  width: 15rem;
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: 0.6rem;
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.playbtn:hover {
+  transform: scale(1.05) perspective(1px);
+}
+
+.playbtn i {
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.playbtn span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#btn {
+  cursor: pointer;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  padding: 10px;
+  border: 0.3rem solid var(--secondary-color);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 0.6rem;
+  transition: transform 0.25s ease;
+}
+
+#btn:hover {
+  transform: scale(1.05) perspective(1px);
+}
+
+#object {
+  font-size: 2rem;
+}
+
+* {
+  user-select: none;
+}
+
+img {
+  pointer-events: none;
+}
+
+#playIcon {
+  display: none;
+  font-size: 2rem;
+  vertical-align: middle;
+}
+
+.playbtn.played #playIcon {
+  display: inline-block;
 }
