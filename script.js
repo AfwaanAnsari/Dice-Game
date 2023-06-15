@@ -1,40 +1,57 @@
-var btn = document.getElementById("btn");
-var object = document.getElementById("object");
-btn.onclick = function() {
-    document.body.classList.toggle("light-theme");
+const btn = document.getElementById("btn");
+const object = document.getElementById("object");
+const container = document.querySelector(".container");
+const h1 = document.querySelector("h1");
+const playBtn = document.querySelector(".playbtn");
+const image1 = document.querySelector(".img1");
+const image2 = document.querySelector(".img2");
+let isFirstPlay = true;
 
-    if(document.body.classList.contains("light-theme")) {
-        object.classList.remove("fa-sun");
-        object.classList.add("fa-moon"); 
+btn.onclick = function () {
+  document.body.classList.toggle("light-theme");
+
+  if (document.body.classList.contains("light-theme")) {
+    object.classList.replace("fa-sun", "fa-moon");
+  } else {
+    object.classList.replace("fa-moon", "fa-sun");
+  }
+};
+
+window.addEventListener("load", function () {
+  container.classList.add("loaded");
+  h1.classList.add("loaded");
+});
+
+function setDiceImage(image, randomNumber) {
+  const randomImageSource = `images/${randomNumber}.png`;
+  image.setAttribute("src", randomImageSource);
+}
+
+function playDice() {
+  container.classList.remove("loaded");
+  h1.classList.remove("loaded");
+  playBtn.style.pointerEvents = "none";
+
+  setTimeout(function () {
+    const randomNumber1 = Math.ceil(Math.random() * 6);
+    setDiceImage(image1, randomNumber1);
+
+    const randomNumber2 = Math.ceil(Math.random() * 6);
+    setDiceImage(image2, randomNumber2);
+
+    if (randomNumber1 > randomNumber2) {
+      h1.innerHTML = "Player 1 Wins!";
+    } else if (randomNumber1 === randomNumber2) {
+      h1.innerHTML = "It's a Draw!";
+    } else {
+      h1.innerHTML = "Player 2 Wins!";
     }
-    else {
-        object.classList.remove("fa-moon");
-        object.classList.add("fa-sun"); 
-    }
+
+    container.classList.add("loaded");
+    h1.classList.add("loaded");
+    playBtn.style.pointerEvents = "auto";
+
+    playBtn.innerHTML = `Play Again <i class="fa-solid fa-arrows-rotate"></i>`;
+    isFirstPlay = false;
+  }, 200);
 }
-
-var randomNumber1 = Math.ceil(Math.random() * 6); // Random Number b/w 1 & 6
-var randomImageSource1 = "images/" + randomNumber1 + ".png"; // images/1.png - images/6.png
-
-var image1 = document.querySelectorAll("img")[0];
-
-image1.setAttribute("src", randomImageSource1);
-
-var randomNumber2 = Math.ceil(Math.random()* 6); // Random Number b/w 1 & 6
-var randomImageSource2 = "images/" + randomNumber2 + ".png"; // images/1.png - images/6.png
-
-var image2 = document.querySelectorAll("img")[1];
-
-image2.setAttribute("src", randomImageSource2);
-
-if(randomNumber1 > randomNumber2) {
-    document.querySelector("h1").innerHTML = "Player 1 Wins!"
-}
-else if(randomNumber1 === randomNumber2) {
-    document.querySelector("h1").innerHTML = "It's a Draw!"
-}
-else {
-    document.querySelector("h1").innerHTML = "Player 2 Wins!"
-}
-
-
